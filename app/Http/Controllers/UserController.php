@@ -2,137 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequeast;
+use Illuminate\Support\Facades\Session;
+
+//use App\Http\Controllers;
 
 class UserController extends Controller
 {
+    // public function index()
+    // {
+    //     $this->data['users']=User::all();
+    //     return view('users.user',$this->data);
+    // }
+    // public function create()
+    // {
+    //     # code...
+    //     $this->data['mode']='create';
+    //     $this->data['groups']=Group::groupArray();
+    //     return view('users.create',$this->data);
+    // }
+    // public function store(CreateUserRequeast $request)
+    // {
+    //    // $group=$request->group_id;
+    //    $data= $request->all();
 
- public function index(){
+    //    if ( User::create($data)) {
+    //     Session::flash('message',"User Created Successfully..");
+    //  }
+    //  else {
+    //      Session::flash('message',"User  not Created .");
+    //  }
 
-    }
+    //  return redirect()->to('users');
+    // }
+    // public function edit($id)
+    // {
+    //     $this->data['groups']=Group::groupArray();
+    //     $this->data['user']= User::findOrFail($id);
+    //     $this->data['mode']='edit';
+    //     return view('users.create',$this->data);
+    // }
+    // public function update( Request $request,$id)
+    // {
+    //    $data=$request->all();
 
-//     public function create(){
-//         return view('user.create');
-//     }
-//     public function createData(Request $req){
-//        $users = $this->getUserList();
-//         // $ide=$req->$idnumber;
-//         $users = [];
-//         $ide=4;
-//        $username= $req->uname;
-//        $password=$req->password;
-//        $REpassword=$req->repass;
-//        $email=$req->email;
-//       $user=[['id'=>4, 'username'=>$username, 'password'=>$password, 'email'=>$email, 'type'=>'admin']];
-//       if($password==$REpassword){
+    //    $user=User::find($id);
+    //    $user->group_id=$data['group_id'];
+    //    $user->name=$data['name'];
+    //    $user->phone=$data['phone'];
+    //    $user->email=$data['email'];
+    //    $user->address=$data['address'];
 
-//         $us=array_merge($this->getUserList(),$user);
-//         //$this->getUserList()->array_merge($us,$user);
-//         //$this->getUserList()==$us;
-//          //echo"successfull";
-//         // echo dd( $us);
-//         //$new = new getUserList();
-//         $this->getUserList()->push($us);
-//          //return view('user.userlist')->with('userlist', $us);
-//          return $us;
-//       }
-//       else{
-//          echo"error";
-//       }
-//     }
 
-//     public function details($id){
+    //    if ( $user->save()) {
+    //     Session::flash('message',"User Updated Successfully..");
+    //  }
+    //  else {
+    //      Session::flash('message',"User  not Updated .");
+    //  }
+    //  return redirect()->to('users');
 
-//         $users = $this->getUserList();
-//         $user = '';
-
-//         foreach($users as $u){
-//             if($u['id'] == $id){
-//                 $user = $u;
-//                 break;
-//             }
-//         }
-//         //$user= ['id'=>1, 'name'=>'alamin', 'password'=>'123', 'email'=>'aa@aiub.edu','type'=>'user'];
-//         return view('user.details')->with('user', $user);
-//     }
-
-//     public function edit($id){
-//         echo $id;
-//     }
-
-//     public function update(Request $req, $id){
-//         echo $id;
-//     }
-
-//     public function delete($id){
-//         echo $id;
-//     }
-
-//     public function destroy($id){
-//         echo $id;
-//     }
-
-//     public function list(){
-//         $users = $this->getUserList();
-
-//         // $user= $this->createData( Request $req);
-//         // $users=array_push($users,$user);
-//         return view('user.userlist')->with('userlist', $users);
-//     }
-
-//     public function getUserList(){
-//         return [
-//             ['id'=>1, 'username'=>'shihab', 'password'=>'123', 'email'=>'email@aiub.edu', 'type'=>'admin'],
-//             ['id'=>2, 'username'=>'uddin', 'password'=>'223', 'email'=>'xyz@aiub.edu', 'type'=>'admin'],
-//             ['id'=>3, 'username'=>'shakil', 'password'=>'124453', 'email'=>'abc@aiub.edu', 'type'=>'admin'],
-//         ];
-//     }
-// }
-public function create(){
-    return view('user.create');
-}
-
-public function details($id){
-
-    $users = $this->getUserList();
-    $user = '';
-
-    foreach($users as $u){
-        if($u['id'] == $id){
-            $user = $u;
-            break;
-        }
-    }
-    //$user= ['id'=>1, 'name'=>'alamin', 'password'=>'123', 'email'=>'aa@aiub.edu','type'=>'user'];
-    return view('user.details')->with('user', $user);
-}
-
-public function edit($id){
-    echo $id;
-}
-
-public function update(Request $req, $id){
-    echo $id;
-}
-
-public function delete($id){
-    echo $id;
-}
-
-public function destroy($id){
-    echo $id;
-}
-
-public function list(){
-    $users = $this->getUserList();
-    return view('user.userlist')->with('userlist', $users);
-}
-
-public function getUserList(){
-    return [
-        ['id'=>1, 'username'=>'alamin', 'password'=>'123', 'email'=>'email@aiub.edu', 'type'=>'admin'],
-        ['id'=>2, 'username'=>'xyz', 'password'=>'223', 'email'=>'xyz@aiub.edu', 'type'=>'admin'],
-        ['id'=>3, 'username'=>'abc', 'password'=>'124453', 'email'=>'abc@aiub.edu', 'type'=>'admin'],
-    ];
-}
+    // }
+    // public function destroy($id)
+    // {
+    //     $this->data['user']= User::findOrFail($id);
+    //     if ( User::find($id)->delete()) {
+    //         Session::flash('message',"User Deleted Successfully..");
+    //      }
+    //      else {
+    //          Session::flash('message',"User  Delet .");
+    //      }
+    //      return redirect()->to('users');
+    // }
 }

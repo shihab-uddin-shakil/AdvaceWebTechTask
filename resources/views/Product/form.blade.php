@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Product</title>
-</head>
-
-<body>
-
-    <h3> Product</h3>
-
-
+@extends('layout.main');
+@section('main_content')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -41,20 +31,15 @@
                     <div class="col md-6">
 
                         @if (@isset($product))
-                            {!! Form::model($user, ['route' => ['users.update', $product->id], 'method' => 'put']) !!}
+                            {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'put']) !!}
 
 
                         @else
-                            {!! Form::open(['route' => 'users.store', 'method' => 'post']) !!}
+                            {!! Form::open(['route' => 'products.store', 'method' => 'post']) !!}
 
 
                         @endif
-                        <div class="form-group">
 
-
-
-
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -69,33 +54,34 @@
                 <div class="row">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="phone">Qty</label>
-                            {!! Form::tel('', null, ['class' => 'form-control', 'id' => 'phone', 'placeholder' => 'phone']) !!}
+                            <label for="phone">Quantity</label>
+                            {!! Form::number('Qty', null, ['class' => 'form-control', 'id' => 'Qty', 'placeholder' => 'Qty']) !!}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            {!! Form::email('email', null, ['class' => 'form-control', 'id' => 'email', 'placeholder' => 'email']) !!}
+                            <label for="email">Price</label>
+                            {!! Form::number('Price', null, ['class' => 'form-control', 'id' => 'Price', 'placeholder' => 'Price']) !!}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'address', 'placeholder' => 'address']) !!}
+                            <label for="address">Pictures</label>
+                            {{-- {!! Form::text('image', null, ['class' => 'form-control', 'id' => 'image', 'placeholder' => 'image']) !!} --}}
+                            {!!Form::file('image', null, ['class' => 'form-control', 'id' => 'image', 'placeholder' => 'image'])!!}
                         </div>
                     </div>
                 </div>
 
                 <br>
                 @if ($mode == 'edit')
-                    <input type="submit" class="btn btn-info" value="Update User">
+                    <input type="submit" class="btn btn-info" value="Update product">
                 @else
-                    <input type="submit" class="btn btn-primary" value="Add User">
+                    <input type="submit" class="btn btn-primary" value="Add product">
                 @endif
 
                 {!! Form::close() !!}
@@ -103,8 +89,4 @@
 
             </div>
         </div>
-
-
-</body>
-
-</html>
+    @stop
