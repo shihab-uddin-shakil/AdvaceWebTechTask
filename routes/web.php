@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::get('/','AdminController@index');
+Route::get('/admins', function () {
     return view('layout.main');
 });
-//Route::get('/users','UserController@index');
+Route::get('/users','UserController@index');
 
 
-// Route::get('/groups', 'UserGroupsController@index');
-// Route::get('groups/create','UserGroupsController@create');
-// Route::post('groups/create','UserGroupsController@store');
-// Route::delete('groups/{id}','UserGroupsController@destory');
+Route::get('/groups', 'UserGroupsController@index');
+Route::get('groups/create','UserGroupsController@create');
+Route::post('groups/create','UserGroupsController@store');
+Route::delete('groups/{id}','UserGroupsController@destory');
 
-// Route::resource('/users', 'UserController',['except'=>['show']]);
+Route::resource('/users', 'UserController',['except'=>['show']]);
 Route::resource('/products', 'ProductController',['except'=>['show']]);

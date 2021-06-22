@@ -114,9 +114,28 @@ class ProductController extends Controller
            $product->name=$data['name'];
            $product->Qty=$data['Qty'];
            $product->Price=$data['Price'];
-           $product->image=$data['image'];
+          $product->image=$data['image'];
 
+           if($request->hasFile('image')){
+            $file = $request->file('image');
+            // echo "file name: ".$file->getClientOriginalName()."<br>";
+            // echo "file extension: ".$file->getClientOriginalExtension()."<br>";
+            // echo "file Mime Type: ".$file->getType()."<br>";
+            // echo "file Size: ".$file->getSize();
 
+            // if(
+                $filename=$file->getClientOriginalName();
+               // $product->image=$filename;
+                $file->move('upload/', $filename);
+        //         ){
+        //         echo "success";
+        //     }else{
+        //         echo "error..";
+        //     }
+
+        // }else{
+
+        }
            if ( $product->save()) {
             Session::flash('message',"product Updated Successfully..");
          }
