@@ -59,15 +59,17 @@ class ProductController extends Controller
         //     }
 
         // }else{
+            $data['image']=$filename;
+            if ( Product::create($data)) {
+                Session::flash('message',"product Created Successfully..");
+             }
+             else {
+                 Session::flash('message',"product  not Created .");
+             }
 
         }
          //     echo "file not found!";
-         if ( Product::create($data)) {
-            Session::flash('message',"product Created Successfully..");
-         }
-         else {
-             Session::flash('message',"product  not Created .");
-         }
+        
 
 
 
@@ -116,26 +118,26 @@ class ProductController extends Controller
            $product->Price=$data['Price'];
           $product->image=$data['image'];
 
-           if($request->hasFile('image')){
-            $file = $request->file('image');
-            // echo "file name: ".$file->getClientOriginalName()."<br>";
-            // echo "file extension: ".$file->getClientOriginalExtension()."<br>";
-            // echo "file Mime Type: ".$file->getType()."<br>";
-            // echo "file Size: ".$file->getSize();
+        //    if($request->hasFile('image')){
+        //     $file = $request->file('image');
+        //     // echo "file name: ".$file->getClientOriginalName()."<br>";
+        //     // echo "file extension: ".$file->getClientOriginalExtension()."<br>";
+        //     // echo "file Mime Type: ".$file->getType()."<br>";
+        //     // echo "file Size: ".$file->getSize();
 
-            // if(
-                $filename=$file->getClientOriginalName();
-               // $product->image=$filename;
-                $file->move('upload/', $filename);
-        //         ){
-        //         echo "success";
-        //     }else{
-        //         echo "error..";
-        //     }
+        //     // if(
+        //         $filename=$file->getClientOriginalName();
+        //        // $product->image=$filename;
+        //         $file->move('upload/', $filename);
+        // //         ){
+        // //         echo "success";
+        // //     }else{
+        // //         echo "error..";
+        // //     }
 
-        // }else{
+        // // }else{
 
-        }
+        // }
            if ( $product->save()) {
             Session::flash('message',"product Updated Successfully..");
          }

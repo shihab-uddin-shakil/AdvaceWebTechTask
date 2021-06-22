@@ -15,16 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','AdminController@index');
 Route::post('/','AdminController@verify');
-Route::get('/admins', function () {
-    return view('layout.main');
-});
-Route::get('/users','UserController@index');
+Route::get('/register','CustomerController@index');
+Route::post('/register','CustomerController@signup');
+ Route::get('/customer','CustomerController@customer');
+Route::get('/addproduct','CustomerController@addp');
+Route::post('/addproduct','CustomerController@addnp');
+Route::get('/admin','AdminController@admin');
+Route::get('/a_products','AdminController@product');
+
+// Route::get('/admins', function () {
+//     return view('layout.main');
+// });
+// Route::get('/users','UserController@index');
 
 
-Route::get('/groups', 'UserGroupsController@index');
-Route::get('groups/create','UserGroupsController@create');
-Route::post('groups/create','UserGroupsController@store');
-Route::delete('groups/{id}','UserGroupsController@destory');
+// Route::get('/groups', 'UserGroupsController@index');
+// Route::get('groups/create','UserGroupsController@create');
+// Route::post('groups/create','UserGroupsController@store');
+// Route::delete('groups/{id}','UserGroupsController@destory');
 
-Route::resource('/users', 'UserController',['except'=>['show']]);
-Route::resource('/products', 'ProductController',['except'=>['show']]);
+// Route::resource('/users', 'UserController',['except'=>['show']]);
+// Route::resource('/products', 'ProductController',['except'=>['show']]);
