@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/','AdminController@index');
+Route::post('/','AdminController@verify');
 Route::get('/admins', function () {
     return view('layout.main');
 });
