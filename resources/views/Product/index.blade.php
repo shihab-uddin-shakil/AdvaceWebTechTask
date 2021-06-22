@@ -48,8 +48,9 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->Qty }}</td>
                                     <td>{{ $product->Price }}</td>
-                                   
-                                    <td><img src="{{ asset($product->image) }}"></td>
+
+                                    <td><img src="{{ asset('upload/' . $product->image) }}" width="80" height="100"></td>
+                                    {{-- <td> {{ $product->image }}</td> --}}
 
                                     <td>
                                         <form method="POST"

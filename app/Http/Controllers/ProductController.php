@@ -49,22 +49,27 @@ class ProductController extends Controller
             // echo "file Mime Type: ".$file->getType()."<br>";
             // echo "file Size: ".$file->getSize();
 
-            if($file->move('upload', $file->getClientOriginalName())){
-                echo "success";
-            }else{
-                echo "error..";
-            }
+            // if(
+                $filename=$file->getClientOriginalName();
+                $file->move('upload/', $filename);
+        //         ){
+        //         echo "success";
+        //     }else{
+        //         echo "error..";
+        //     }
 
-        }else{
-            echo "file not found!";
+        // }else{
+
         }
+         //     echo "file not found!";
+         if ( Product::create($data)) {
+            Session::flash('message',"product Created Successfully..");
+         }
+         else {
+             Session::flash('message',"product  not Created .");
+         }
 
-       if ( Product::create($data)) {
-        Session::flash('message',"product Created Successfully..");
-     }
-     else {
-         Session::flash('message',"product  not Created .");
-     }
+
 
      return redirect()->to('products');
     }

@@ -35,7 +35,7 @@
 
 
                         @else
-                            {!! Form::open(['route' => 'products.store', 'method' => 'post']) !!}
+                            {!! Form::open(['route' => 'products.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 
 
                         @endif
@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="address">Pictures</label>
                             {{-- {!! Form::text('image', null, ['class' => 'form-control', 'id' => 'image', 'placeholder' => 'image']) !!} --}}
-                            {!!Form::file('image', null, ['class' => 'form-control', 'id' => 'image', 'placeholder' => 'image'])!!}
+                            {!! Form::file('image', null, ['class' => 'form-control', 'id' => 'image', 'placeholder' => 'image']) !!}
                         </div>
                     </div>
                 </div>
